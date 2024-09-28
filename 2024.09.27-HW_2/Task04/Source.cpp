@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 		a2 -= b2;
 	}
 
-	if (a1 == b2 && b1 == b2 && c1 == c2)
+	if (a1 == a2 && b1 == b2 && c1 == c2)
 	{
 		printf("Boxes are equal");
 	}
