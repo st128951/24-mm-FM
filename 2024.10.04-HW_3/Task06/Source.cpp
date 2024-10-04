@@ -1,18 +1,25 @@
-=
 #include <iostream>
-int main ()
+int main(int argc, char* argv[])
 {
-int gcd(int a, int b) 
-{
-	if (a * b == 0) return a + b;
-	if (a < b) return gcd(a, b % a);
-	else return gcd(a % b, b);
-}
+    int a = 0;
+    int b = 0;
 
+    scanf_s("%d", &a);
+    scanf_s("%d", & b);
 
-	int a, b;
-	printf("Enter two integers: ");
-	scanf("%d %d", &a, &b);
-	printf("The least common multiple of %d and %d is: %d\n", a, b, a * b / gcd(a, b));
-	return 0;
+    int temp_a = a;
+    int temp_b = b;
+
+    while (temp_b != 0)
+    {
+        int z = temp_b;
+        temp_b = temp_a % temp_b;
+        temp_a = z;
+    }
+
+    int f = (a * b) / temp_a;
+
+    printf("%d", f);
+
+    return EXIT_SUCCESS;
 }

@@ -9,9 +9,9 @@ int main(int argc, char* argv[])
 	
 	scanf_s("%d", &n);
 
-	for (i = 1; i <= n; i++)
+	for (i = 1; i <= n; ++i)
 	{
-		for (j = 1; j <= n; j++)
+		for (j = 1; j <= n; ++j)
 		{
 			scanf_s("%d", &b);
 			z += b;
