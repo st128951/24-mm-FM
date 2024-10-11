@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 int main(int argc, char* argv[])
 {
 	int a[100] = { 0 };
