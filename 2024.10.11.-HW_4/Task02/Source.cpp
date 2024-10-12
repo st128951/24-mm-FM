@@ -1,12 +1,12 @@
-#include <iostream>
-int main()
+#include<iostream>
+int main(int argc, char* argv[])
 {
-	int a[1001] = { 0 };
-	int i = 0;
 	int n = 0;
-	int l = 0,
-	int r = 0; 
+	int i = 0;
+	int a[1001] = { 0 };
 	int k = 0;
+	int l = 0;
+	int r = 0;
 
 	scanf_s("%d", &n);
 
@@ -29,6 +29,5 @@ int main()
 	}
 
 	printf("%d %d", a[k], k);
-
 	return EXIT_SUCCESS;
 }
