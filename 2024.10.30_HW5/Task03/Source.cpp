@@ -12,24 +12,26 @@ int main(int argc, char* argv[])
 
 	std :: cin >> n;
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		std :: cin >> *(a + i);		
 	}
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		if (*(a + i) % 2 == 1)
 		{
-			*(b + i) = *(a + i); k++; 
+			*(b + i) = *(a + i); 
+			++k; 
 		}
 		else
 		{ 
-			*(c + i) = *(a + i); d++; 
+			*(c + i) = *(a + i); 
+			++d; 
 		}
 	}
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		if (*(b + i) != 0)
 		{
@@ -38,7 +40,7 @@ int main(int argc, char* argv[])
 	}
 
 	
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		if (*(c + i) != 0)
 		{
