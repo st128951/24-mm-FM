@@ -5,7 +5,7 @@
 int* initIntArray(int len)
 {
 	int* res = nullptr;
-	if (len != 0)
+	if (len >= 0)
 	{
 		res = (int*)malloc(sizeof(int) * len);
 		for (int i = 0; res != nullptr && i < len; ++i)
@@ -17,9 +17,15 @@ int* initIntArray(int len)
 	else if(len == 0)
 	{
 		printf("Number of elements can not be equal to 0\n");
-		return 0;
+		exit(0);
+	}
+	else if (len <= 0)
+	{
+		printf("Number of elements can not be less then 0\n");
+		exit(0);
 	}
 }
+
 
 void printIntArray(int* a, int len)
 {
@@ -30,7 +36,7 @@ void printIntArray(int* a, int len)
 	printf("\n");
 }
 
-void randomizeIntArray(int* a, int len, int min = 0, int max = 9)
+void randomizeIntArray(int* a, int len, int min = -100, int max = 100)
 {
 	if (a != nullptr)
 	{
@@ -52,16 +58,6 @@ void ManualArray(int* a, int len)
 	}
 }
 
-
-int sumOfIntArray(int* a, int len)
-{
-	int res = 0;
-	for (int i = 0; a != nullptr && i < len; ++i)
-	{
-		res += a[i];
-	}
-	return res;
-}
 
 void expandIntArray_back(int** a, int* len)
 {
@@ -106,6 +102,17 @@ void addElementToStart(int** a, int* len, int element)
 
 }
 
+void ClearAndChangeArray(int* a, int len)
+{
+	
+	for (int i = 0; a != nullptr && i < len; ++i)
+		{
+			a[i] = 0;
+		}
+	printf("Add elements of new array : \n");
+	ManualArray(a, len); 
+}
+
 void printMenu1()
 {
 	printf("1 - Enter the Number of elements\n");
@@ -125,49 +132,38 @@ void printMenu3()
 	printf("1 - Print array\n");
 	printf("2 - Add to end\n");
 	printf("3 - Add to front\n");
-	printf("4 - Clean console\n");
+	printf("4 - Change Array\n");
+	printf("5 - Clean console\n");
 }
 
-int main(int argc, char* argv[])
+void choice_1(int choice)
 {
-	system("cls");
-	srand(time(0));
-	printMenu1();
-	int choice = 0;
-	scanf_s("%d", &choice);
-
 	switch (choice)
 	{
 	case 0:
 	{
-		return 0;
+		exit(0);
 	}
 	case 1:
 	{
 		printf("The Number of elements - ");
 		break;
 	}
-	default:
+	default: 
 	{
 		printf("Unknown command. Try again\n");
-		return 0;
+		exit(0);
 	}
 	}
+}
 
-	int len = 0;
-	scanf_s("%d", &len);
-	printf("\n");
-
-	int* a = initIntArray(len);
-
-	printMenu2();
-	int choice_a = 0;
-	scanf_s("%d", &choice_a);
+void choice_2(int choice_a, int* a, int len)
+{
 	switch (choice_a)
 	{
 	case 0:
 	{
-		return 0;
+		exit(0);
 	}
 	case 1:
 	{
@@ -184,14 +180,39 @@ int main(int argc, char* argv[])
 	default:
 	{
 		printf("Unknown command. Try again\n");
-		return 0;
+		exit(0);
 	}
 	}
+}
+
+int main(int argc, char* argv[])
+{
+	system("cls");
+	srand(time(0));
+	printMenu1();
+	int choice = 0;
+	scanf_s("%d", &choice);
+
+	choice_1(choice);
+
+	int len = 0;
+	scanf_s("%d", &len);
+	printf("\n");
+
+	int* a = initIntArray(len);
+
+	printMenu2();
+	int choice_a = 0;
+	scanf_s("%d", &choice_a);
+
+	choice_2(choice_a, a, len);
 
 	bool flag = true;
 	while (flag)
 	{
+		printf("\n");
 		printMenu3();
+		printf("\n");
 		int choice_2 = 0;
 		scanf_s("%d", &choice_2);
 		switch (choice_2)
@@ -212,7 +233,7 @@ int main(int argc, char* argv[])
 			printf("New element - ");
 			scanf_s("%d", &el);
 			addElementToEnd(&a, &len, el);
-			printf("\n");
+			printf("\n New Array :\n");
 			printIntArray(a, len);
 			break;
 		}
@@ -222,11 +243,17 @@ int main(int argc, char* argv[])
 			printf("New element - ");
 			scanf_s("%d", &el);
 			addElementToStart(&a, &len, el);
-			printf("\n");
+			printf("\n New Array :\n");
 			printIntArray(a, len);
 			break;
 		}
 		case 4:
+		{
+			printf("Number of elements is %d\n", len);
+			ClearAndChangeArray(a, len);
+			break;
+		}
+		case 5:
 		{
 			system("cls");
 			break;
@@ -234,7 +261,7 @@ int main(int argc, char* argv[])
 		default:
 		{
 			printf("Unknown command. Try again\n");
-			return 0;
+			exit(0);
 		}
 		}
 	}
