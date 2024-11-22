@@ -89,6 +89,36 @@ void expandIntArray_front(int** a, int* len)
 	}
 }
 
+void DelFirstEl(int** a, int* len)
+{
+	int* newArray = initIntArray(*len - 1);
+	if (newArray != nullptr)
+	{
+		for (int i = 1; i < *(len); ++i)
+		{
+			newArray[i - 1] = (*a)[i];
+		}
+		free(*a);
+		*a = newArray;
+		(*len)--;
+	}
+}
+
+void DelFinalEl(int** a, int* len)
+{
+	int* newArray = initIntArray(*len - 1);
+	if (newArray != nullptr)
+	{
+		for (int i = 0; i < (*len - 1); ++i)
+		{
+			newArray[i] = (*a)[i];
+		}
+		free(*a);
+		*a = newArray;
+		(*len)--;
+	}
+}
+
 void addElementToEnd(int** a, int* len, int element)
 {
 	expandIntArray_back(a, len);
@@ -133,7 +163,9 @@ void printMenu3()
 	printf("2 - Add to end\n");
 	printf("3 - Add to front\n");
 	printf("4 - Change Array\n");
-	printf("5 - Clean console\n");
+	printf("5 - Delete first element\n");
+	printf("6 - Delete final element\n");
+	printf("7 - Clean console\n");
 }
 
 void choice_1(int choice)
@@ -243,7 +275,7 @@ int main(int argc, char* argv[])
 			printf("New element - ");
 			scanf_s("%d", &el);
 			addElementToStart(&a, &len, el);
-			printf("\n New Array :\n");
+			printf("\nNew Array :\n");
 			printIntArray(a, len);
 			break;
 		}
@@ -254,6 +286,18 @@ int main(int argc, char* argv[])
 			break;
 		}
 		case 5:
+		{
+			DelFirstEl(&a, &len);
+			printf("First element deleted\n");
+			break;
+		}
+		case 6:
+		{
+			DelFinalEl(&a, &len);
+			printf("Final element deleted\n");
+			break;
+		}
+		case 7:
 		{
 			system("cls");
 			break;
