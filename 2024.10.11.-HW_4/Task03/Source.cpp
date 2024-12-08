@@ -1,5 +1,5 @@
 #include <iostream>
-int main()
+int main(int argc, char* argv[])
 {
     int a[1000] = { 0 };
     int i = 0;
@@ -16,7 +16,7 @@ int main()
 
     for (i = 1; i < n; ++i)
     {
-        scanf("%d", &a[i]);
+        scanf_s("%d", &a[i]);
         if (a[i] > x)
         {
             x = a[i];
