@@ -5,7 +5,7 @@
 int* initIntArray(int len)
 {
 	int* res = nullptr;
-	if (len >= 0)
+	if (len > 0)
 	{
 		res = (int*)malloc(sizeof(int) * len);
 		for (int i = 0; res != nullptr && i < len; ++i)
@@ -19,7 +19,7 @@ int* initIntArray(int len)
 		printf("Number of elements can not be equal to 0\n");
 		exit(0);
 	}
-	else if (len <= 0)
+	else if (len < 0)
 	{
 		printf("Number of elements can not be less then 0\n");
 		exit(0);
